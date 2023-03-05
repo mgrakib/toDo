@@ -184,12 +184,36 @@
 
             <input type="checkbox" id="my-modal" class="modal-toggle" />
             <div class="modal">
-            <div class="modal-box">
-                <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
-                <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-                <div class="modal-action">
-                <label for="my-modal" class="btn">Yay!</label>
+            <div class="modal-box relative">
+                <div class="w-[150px] h-[3px] bg-gray-400 rounded-lg absolute top-2 left-1/2 -translate-x-1/2"></div>
+
+                <div class="py-4">
+                    <p class="text-center text-2xl text-gray-600 font-bold mb-4">New Task ToDo</p>
+                    <div class="p-4 border-t ">
+                        <p class="text-gray-600 text-xl font-bold mb-3">Title Task</p>
+                        <input type="text" placeholder="task title" class="input input-bordered w-full" />
+
+                        <p class="text-gray-600 text-xl font-bold mt-4 mb-3">Description</p>
+                        <textarea class="textarea textarea-bordered w-full" placeholder="task description"></textarea>
+                    </div>
+
+                    <div class="flex justify-between items-center px-4 gap-3">
+                         <div>
+                            <p class="text-gray-600 text-xl font-bold mt-4">Date</p>
+                             <input type="date" placeholder="task title" class="input input-bordered w-full my-3" />
+                            <label for="my-modal" class="btn w-full bg-blue-500 hover:bg-red-500">Cancle</label>
+                        </div>
+                        <div>
+                            <p class="text-gray-600 text-xl font-bold mt-4">Time</p>
+                             <input type="time" placeholder="task title" class="input input-bordered w-full my-3" />
+                            <label for="my-modal" class="btn w-full bg-blue-500 hover:bg-red-500">Creat</label>
+                        </div>
+                    </div>
                 </div>
+
+               
+                </div>
+                
             </div>
             </div>
            </div>
