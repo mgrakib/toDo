@@ -5,13 +5,200 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/daisyui@2.51.3/dist/full.css" rel="stylesheet" type="text/css" />
-
-    <title>Make Your Dask</title>
+    <script src="https://kit.fontawesome.com/d64724f41e.js" crossorigin="anonymous"></script>
+    <title>To Do List</title>
+    <link rel="stylesheet" href="./style/style.css">
 </head>
-<body>
+<body class="bg-[#E8EBF4] p-5">
     
-    
+    <section class="p-5 bg-[#F9FAFC] max-w-[450px] min-w-[450px] rounded-xl mx-auto">
+        <header>
+            <div class="flex justify-between items-center">
+                <!-- profile img -->
+                <div class="w-[50%] flex items-center gap-3">
+                    <div class="w-[40px] h-[40px] rounded-full">
+                        <img src="./image/dp.png" alt="">
+                    </div>
+                    <div>
+                        <p class="text-gray-400">Hello</p>
+                        <h4 class="text-gray-900 font-bold">MG Rakib</h4>
+                    </div>
+                </div>
+                <div class="w-[50%] flex items-center gap-3 justify-end">
+                    <div class="w-[40px] h-[40px] border rounded-full flex items-center justify-center"><i class="fa-regular fa-calendar-days"></i></div>
+                    <div class="w-[40px] h-[40px] border rounded-full flex items-center justify-center"><i class="fa-regular fa-bell"></i></div>
+                    
+                    
+                </div>
+                
+            </div>
+        </header>
+
+        <!-- main section start  -->
+        <main class="py-5">
+            <!-- on progress  -->
+            <div class="flex justify-between items-center mb-8">
+                <div class="font-bold">On Progress (<span id="progress-count" class="text-gray-400">00</span>)</div>
+                <div class="text-blue-500 cursor-pointer">
+                    view more
+                </div>
+            </div>
+            <!-- on progress  -->
+
+            <!-- recetnt should done -->
+            <section class="bg-[#FFFFFF] p-4 rounded-lg shadow-[0_0_5px_1px_rgba(0,0,0,.6)] relative overflow-hidden">
+                <div class="flex justify-between items-center pb-5">
+                    <div>
+                        <h4 class="text-xl text-gray-700 font-bold" id="top-task-title">I am going to do it.</h4>
+                        <p>Friday, 06 Aug 2023</p>
+                    </div>
+                    <div>
+                        <div class="w-[50px] h-[50px] flex justify-center items-center bg-blue-200 rounded-full"><i class="fa-regular fa-user"></i></div>
+                    </div>
+                </div>
+                <div class="border-t py-4">
+                    <p class="text-gray-500">Description:</p>
+                    <p class="text-gray-900">Love Is Easy But I'm Busy To FullFill My Drem... </p>
+                </div>
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p>Teams:</p>
+                        <div>
+                            <div class="avatar-group -space-x-3">
+                                <div class="avatar">
+                                    <div class="w-[30px]">
+                                    <img src="./image/dp.png" />
+                                    </div>
+                                </div>
+                                <div class="avatar">
+                                    <div class="w-[30px]">
+                                    <img src="./image/dp.png" />
+                                    </div>
+                                </div>
+                               
+                                </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="radial-progress text-blue-600" style="--value:70; --size:40px; --thickness: 4px;">70%</div>
+                    </div>
+                </div>
+                <div class="w-full h-[10px] bg-blue-600 absolute left-0 -bottom-1">
+
+                </div>
+            </section>
+            <!-- recetnt should done end -->
+
+
+            <!-- completed text  -->
+            <div class="flex justify-between items-center my-8">
+                <div class="font-bold">Completed</div>
+                <div class="text-blue-500 cursor-pointer">
+                    view more
+                </div>
+            </div>
+            <!-- completed text  -->
+
+            <!-- completed task container -->
+            <div class="max-h-[200px] overflow-y-scroll rounded-lg p-4 scroll-container">
+                <div class="p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-lg font-bold"><s>Already I started</s></p>
+                            <p class="text-gray-500">I am on the way to achiv my goal....</p>
+                        </div>
+                        <div class="flex justify-center items-center text-xl text-blue-600">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+                    <div class="my-4 pt-4 border-t flex justify-between items-center">
+                        <div><p>28 Dec 2022</p></div>
+                        <div>
+                            <div class="avatar-group -space-x-2">
+                                <div class="avatar">
+                                    <div class="w-[30px]">
+                                    <img src="./image/dp.png" />
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-lg font-bold"><s>Already I started</s></p>
+                            <p class="text-gray-500">I am on the way to achiv my goal....</p>
+                        </div>
+                        <div class="flex justify-center items-center text-xl text-blue-600">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+                    <div class="my-4 pt-4 border-t flex justify-between items-center">
+                        <div><p>28 Dec 2022</p></div>
+                        <div>
+                            <div class="avatar-group -space-x-2">
+                                <div class="avatar">
+                                    <div class="w-[30px]">
+                                    <img src="./image/dp.png" />
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <div class="p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-lg font-bold"><s>Already I started</s></p>
+                            <p class="text-gray-500">I am on the way to achiv my goal....</p>
+                        </div>
+                        <div class="flex justify-center items-center text-xl text-blue-600">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+                    <div class="my-4 pt-4 border-t flex justify-between items-center">
+                        <div><p>28 Dec 2022</p></div>
+                        <div>
+                            <div class="avatar-group -space-x-2">
+                                <div class="avatar">
+                                    <div class="w-[30px]">
+                                    <img src="./image/dp.png" />
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- completed task container -->
+
+           <div class="pt-4">
+             <!-- modal -->
+            <!-- The button to open modal -->
+            <label for="my-modal" class="btn w-full bg-[#2563EB] hover:bg-[#1642a2]"><i class="fa-solid fa-plus"></i> <span class="ml-3">Creat Task</span></label>
+
+            <input type="checkbox" id="my-modal" class="modal-toggle" />
+            <div class="modal">
+            <div class="modal-box">
+                <h3 class="font-bold text-lg">Congratulations random Internet user!</h3>
+                <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+                <div class="modal-action">
+                <label for="my-modal" class="btn">Yay!</label>
+                </div>
+            </div>
+            </div>
+           </div>
+        </main>
+        <!-- main section start  -->
+    </section>
+
+
 <script src="https://cdn.tailwindcss.com"></script>
-<script src="./script/"></script>
+<script src="./script/script.js"></script>
 </body>
 </html>
