@@ -139,6 +139,7 @@ const sortDate = () => {
 	progressCount.innerText = haveToDoTask.length;
 
 	if (haveToDoTask.length === 0) {
+		setFirstTopTask(haveToDoTask[0]);
 	} else {
 		setFirstTopTask(haveToDoTask[0]);
 	}
@@ -190,10 +191,25 @@ const createTask = () => {
 
 // set vale to first top task 
 const setFirstTopTask = (task) => {
+	console.log(task);
+	
 	// object destructuring 
-	if (task.length === 0) {
+	if (task === undefined) {
+		// toptask title
+		const topTaskTitle = document.getElementById("top-task-title");
+		topTaskTitle.innerText = "task.taskTitle";
+
+		// toptask description
+		const topTaskDescription = document.getElementById(
+			"top-task-description"
+		);
+		topTaskDescription.innerText = 'taskDescription.slice(0, 100) + "..."';
+
+		// task date and time
+		const topTaskDateTime = document.getElementById("top-task-DateTime");
 		
-	} else{
+		topTaskDateTime.innerText = "rakib";
+	} else {
 		const { taskTitle, taskDescription, taskDate, taskTime } = task;
 		// toptask title
 		const topTaskTitle = document.getElementById("top-task-title");
