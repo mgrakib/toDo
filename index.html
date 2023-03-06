@@ -39,8 +39,9 @@
             <!-- on progress  -->
             <div class="flex justify-between items-center mb-8">
                 <div class="font-bold">On Progress (<span id="progress-count" class="text-gray-400">00</span>)</div>
-                <div class="text-blue-500 cursor-pointer">
-                    view more
+                <div class="text-blue-700 cursor-pointer">
+                    <label onclick="viewAllTask()" for="allTaskModal" class="cursor-pointer">view more</label>  
+                    
                 </div>
             </div>
             <!-- on progress  -->
@@ -93,7 +94,9 @@
             <!-- recetnt should done end -->
 
 
-            <!-- completed text  -->
+            <div class="flex w-[400px] overflow-y-scroll bg-green-400">
+               <div class=" bg-red-400">
+                     <!-- completed text  -->
             <div class="flex justify-between items-center my-8">
                 <div class="font-bold">Completed</div>
                 <div class="text-blue-500 cursor-pointer">
@@ -180,6 +183,101 @@
             </div>
             <!-- completed task container -->
 
+               </div>
+
+               <!-- incompleted  -->
+               <div  class="w-full">
+                 <!-- incompleted text  -->
+            <div class="flex justify-between items-center my-8">
+                <div class="font-bold">incompleted</div>
+                <div class="text-blue-500 cursor-pointer">
+                    view more
+                </div>
+            </div>
+            <!-- incompleted text  -->
+
+            <!-- incompleted task container -->
+            <div class="max-h-[200px] overflow-y-scroll rounded-lg p-4 scroll-container">
+                <div class="p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-lg font-bold"><s>Already I started</s></p>
+                            <p class="text-gray-500">I am on the way to achiv my goal....</p>
+                        </div>
+                        <div class="flex justify-center items-center text-xl text-blue-600">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+                    <div class="my-4 pt-4 border-t flex justify-between items-center">
+                        <div><p>28 Dec 2022</p></div>
+                        <div>
+                            <div class="avatar-group -space-x-2">
+                                <div class="avatar">
+                                    <div class="w-[30px]">
+                                    <img src="./image/dp.png" />
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-lg font-bold"><s>Already I started</s></p>
+                            <p class="text-gray-500">I am on the way to achiv my goal....</p>
+                        </div>
+                        <div class="flex justify-center items-center text-xl text-blue-600">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+                    <div class="my-4 pt-4 border-t flex justify-between items-center">
+                        <div><p>28 Dec 2022</p></div>
+                        <div>
+                            <div class="avatar-group -space-x-2">
+                                <div class="avatar">
+                                    <div class="w-[30px]">
+                                    <img src="./image/dp.png" />
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                 <div class="p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <p class="text-lg font-bold"><s>Already I started</s></p>
+                            <p class="text-gray-500">I am on the way to achiv my goal....</p>
+                        </div>
+                        <div class="flex justify-center items-center text-xl text-blue-600">
+                            <i class="fa-solid fa-circle-check"></i>
+                        </div>
+                    </div>
+                    <div class="my-4 pt-4 border-t flex justify-between items-center">
+                        <div><p>28 Dec 2022</p></div>
+                        <div>
+                            <div class="avatar-group -space-x-2">
+                                <div class="avatar">
+                                    <div class="w-[30px]">
+                                    <img src="./image/dp.png" />
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- incompleted task container -->
+
+               </div>
+            </div>
+
+            <!-- creat new task modal  -->
            <div class="pt-4">
              <!-- modal -->
             <!-- The button to open modal -->
@@ -219,10 +317,32 @@
                 
             </div>
             </div>
+            <!-- creat new task modal  end-->
            </div>
         </main>
         <!-- main section start  -->
     </section>
+
+
+
+
+
+    <!-- see all task modal  -->
+    <input type="checkbox" id="allTaskModal" class="modal-toggle" />
+    <div class="modal">
+    <div  class="modal-box">
+
+         <div id="allTask-modal-container" class="max-h-[410px] overflow-y-scroll px-4 py-2">
+
+         </div>
+
+            
+        <div class="modal-action">
+            <label for="allTaskModal" class="btn bg-red-500 hover:bg-red-700">Cancle</label>
+        </div>
+    </div>
+    </div>
+    <!-- see all task modal end -->
 
 
 <script src="https://cdn.tailwindcss.com"></script>

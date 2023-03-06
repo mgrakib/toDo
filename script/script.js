@@ -66,7 +66,7 @@ const sortDate = () => {
 
 
 	haveToDoTask = [...validDate];
-
+	
 	// have to do task sort 
 	haveToDoTask.sort((first, second) => {
 		const datetimeStringFirst = `${first.taskDate}T${first.taskTime}`;
@@ -89,6 +89,13 @@ const sortDate = () => {
 }
 
 
+// refress for valid task 
+setInterval(() => {
+	sortDate();
+
+}, 1000);
+
+
 
 // reat task and push task into all task 
 const createTask = () => {
@@ -99,25 +106,28 @@ const createTask = () => {
 
 	// console.log(taskTime, taskDescription, taskDate, taskTitle);
 	
-	const newArray = {
-		taskTitle: taskTitleValue,
-		taskDescription: taskDescriptionValue,
-		taskDate: taskDateValue,
-		taskTime: taskTimeValue,
-	};
-	
-	
-	
-
-	listOfAllTask.push(newArray);
+	const nowDateTime = new Date().getTime();
+	const inputDateTime = new Date(
+		`${taskDateValue}T${taskTimeValue}`
+	).getTime();
 
 	
-	
+	if (nowDateTime > inputDateTime) {
+		alert('You cant set Backdate time')
+	} else {
+		const newArray = {
+			taskTitle: taskTitleValue,
+			taskDescription: taskDescriptionValue,
+			taskDate: taskDateValue,
+			taskTime: taskTimeValue,
+		};
+
+		listOfAllTask.push(newArray);
+	}
 }
 
 
-
-
+// set vale to first top task 
 const setFirstTopTask = (task) => {
 	// object destructuring 
 	const { taskTitle, taskDescription, taskDate, taskTime } = task;
@@ -137,9 +147,73 @@ const setFirstTopTask = (task) => {
 
 
 
-// refress for valid task 
-setInterval(() => {
-	sortDate();
-	// console.log('done');
+
+
+// view all task 
+
+const viewAllTask = () => {
 	
-}, 1000);
+	const allTaskModalContainer = document.getElementById(
+		"allTask-modal-container"
+	);
+	allTaskModalContainer.innerHTML = '';
+
+	haveToDoTask.forEach(element => {
+		const { taskTitle, taskDate, taskTime, taskDescription } = element;
+		
+		const taskTimeDate = new Date( 
+			`${taskDate}T${taskTime}`
+		).toLocaleString();
+
+		const section = document.createElement("section");
+		section.classList =
+			"bg-[#FFFFFF] p-4 rounded-lg shadow-[0_0_5px_1px_rgba(0,0,0,.6)] relative overflow-hidden mb-5";
+
+		section.innerHTML = `<div class="flex justify-between items-center pb-5">
+                    <div>
+                        <h4 class="text-xl text-gray-700 font-bold" id="top-task-title">${taskTitle}</h4>
+                        <p id="top-task-DateTime">${taskTimeDate}</p>
+                    </div>
+                    <div>
+                        <div class="w-[50px] h-[50px] flex justify-center items-center bg-blue-200 rounded-full cursor-pointer"><i class="fa-regular fa-pen-to-square"></i></div>
+                    </div>
+                </div>
+
+                <!-- top description start  -->
+                <div class="border-t py-4">
+                    <p class="text-gray-500">Description:</p>
+                    <p id="top-task-description" class="text-gray-900">${taskDescription}</p>
+                </div>
+                <!-- top description start  -->
+                <div class="flex justify-between items-center">
+                    <div>
+                        <p>Teams:</p>
+                        <div>
+                            <div class="avatar-group -space-x-3">
+                                <div class="avatar">
+                                    <div class="w-[30px]">
+                                    <img src="./image/dp.png" />
+                                    </div>
+                                </div>
+                                <div class="avatar">
+                                    <div class="w-[30px]">
+                                    <img src="./image/dp.png" />
+                                    </div>
+                                </div>
+                               
+                                </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="radial-progress text-blue-600" style="--value:70; --size:40px; --thickness: 4px;">70%</div>
+                    </div>
+                </div>
+                <div class="w-full h-[10px] bg-blue-600 absolute left-0 -bottom-1">
+                </div>`;
+		
+		
+		allTaskModalContainer.appendChild(section);
+	});
+	
+	
+};
