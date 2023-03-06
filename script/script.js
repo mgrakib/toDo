@@ -58,31 +58,34 @@ let haveToDoTask;
 let incomplete;
 
 // complete array
-let complete = [
-	
-];
+let complete = [];
 
 
 // left array 
-const leftArrayis = [];
+let leftArrayis = [];
 
 const leftArrayFunction = () => {
-	for (let i = 0; i < listOfAllTask.length; i++) {
-		let match = false;
-		for (let j = 0; j < complete.length; j++) {
-			if (listOfAllTask[i].id === complete[j].id) {
-				match = true;
-				break;
-			}
-		}
-		if (!match) {
-			leftArrayis.push(listOfAllTask[i]);
+	
+	leftArrayis = [...listOfAllTask];
+
+	if (complete.length === 0) {
+		
+	} else {
+		for (let i = 0; i < complete.length; i++){
+			const idToRemove = complete[i].id;
+			
+			
+		let index = leftArrayis.findIndex(item => item.id === idToRemove);
+		if (index !== -1) {
+			leftArrayis.splice(index, 1);
+		} 
 		}
 	}
+		
 
 	
-	
 }
+leftArrayFunction();
 
 
 
@@ -107,9 +110,10 @@ const sortDate = () => {
 		);
 	});
 
-
+	
+	
 	// Valid Array list
-	const validDate = listOfAllTask.filter(task => {
+	const validDate = leftArrayis.filter(task => {
 		const datetimeString = `${task.taskDate}T${task.taskTime}`;
 		const nowTimeValue = new Date().getTime();
 		const taskTimeValue = new Date(datetimeString).getTime();
@@ -117,6 +121,7 @@ const sortDate = () => {
 		return nowTimeValue < taskTimeValue;
 	});
 
+	
 	haveToDoTask = [...validDate];
 	// have to do task sort
 	haveToDoTask.sort((first, second) => {
@@ -133,14 +138,19 @@ const sortDate = () => {
 	const progressCount = document.getElementById("progress-count");
 	progressCount.innerText = haveToDoTask.length;
 
-	setFirstTopTask(haveToDoTask[0]);
+	if (haveToDoTask.length === 0) {
+	} else {
+		setFirstTopTask(haveToDoTask[0]);
+	}
 }
 
 
 // refress for valid task 
 setInterval(() => {
+	leftArrayFunction();
 	sortDate();
 	setIncomplete();
+
 }, 1000);
 
 
@@ -181,19 +191,27 @@ const createTask = () => {
 // set vale to first top task 
 const setFirstTopTask = (task) => {
 	// object destructuring 
-	const { taskTitle, taskDescription, taskDate, taskTime } = task;
-	// toptask title 
-	const topTaskTitle = document.getElementById("top-task-title");
-	topTaskTitle.innerText = task.taskTitle;
+	if (task.length === 0) {
+		
+	} else{
+		const { taskTitle, taskDescription, taskDate, taskTime } = task;
+		// toptask title
+		const topTaskTitle = document.getElementById("top-task-title");
+		topTaskTitle.innerText = task.taskTitle;
 
-	// toptask description
-	const topTaskDescription = document.getElementById("top-task-description");
-	topTaskDescription.innerText = taskDescription.slice(0,100) + "...";
+		// toptask description
+		const topTaskDescription = document.getElementById(
+			"top-task-description"
+		);
+		topTaskDescription.innerText = taskDescription.slice(0, 100) + "...";
 
-	// task date and time
-	const topTaskDateTime = document.getElementById("top-task-DateTime");
-	const taskDateTimeString = `${taskDate}T${taskTime}`;
-	topTaskDateTime.innerText = new Date(taskDateTimeString).toLocaleString();
+		// task date and time
+		const topTaskDateTime = document.getElementById("top-task-DateTime");
+		const taskDateTimeString = `${taskDate}T${taskTime}`;
+		topTaskDateTime.innerText = new Date(
+			taskDateTimeString
+		).toLocaleString();
+	}
 }
 
 
@@ -329,10 +347,12 @@ const allClassShow = (id) => {
 			new Date(datetimeStringFirst).getTime()
 		);
 	});
-
+	
+	console.log(id);
+	
 	setComplete();
 	
-	// console.log(id);
+	
 }
 
 
@@ -374,3 +394,5 @@ const setComplete = () => {
 		completeTaskContainer.appendChild(div);
 	});
 };
+
+
