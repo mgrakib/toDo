@@ -59,26 +59,34 @@ let incomplete;
 
 // complete array
 let complete = [
-	{
-		id: 2,
-		taskTitle: "It is top",
-
-		taskDescription:
-			"it is top task description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt aut asperiores accusantium, labore, ipsam nostrum qui provident sit veniam culpa minima ratione. Illo ipsum debitis, recusandae accusantium et assumenda quod.",
-
-		taskDate: "2023-03-25",
-
-		taskTime: "04:30",
-	}
+	
 ];
 
+
+// left array 
+const leftArrayis = [];
+
+const leftArrayFunction = () => {
+	for (let i = 0; i < listOfAllTask.length; i++) {
+		let match = false;
+		for (let j = 0; j < complete.length; j++) {
+			if (listOfAllTask[i].id === complete[j].id) {
+				match = true;
+				break;
+			}
+		}
+		if (!match) {
+			leftArrayis.push(listOfAllTask[i]);
+		}
+	}
+
+	
+	
+}
 
 
 
 const sortDate = () => {
-	
-	const notCompletedArray = 
-	
 	// invalid Array list
 	const inValidDate = listOfAllTask.filter(task => {
 		const datetimeString = `${task.taskDate}T${task.taskTime}`;
@@ -266,21 +274,24 @@ const setIncomplete = () => {
 	incompleteTaskContainer.innerHTML = '';
 
 	incomplete.forEach(element => {
-		const { taskTitle, taskTime} = element;
+		const { taskTitle, taskTime, taskDate, taskDescription } = element;
+		const taskDateTimeString = `${taskDate}T${taskTime}`;
 		const div = document.createElement('div');
 		div.classList =
 			"p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg";
 		div.innerHTML = `<div class="flex justify-between items-center">
                                 <div>
                                     <p class="text-lg font-bold"><s>${taskTitle}</s></p>
-                                    <p class="text-gray-500">I am on the way to achiv my goal....</p>
+                                    <p class="text-gray-500">${taskDescription.slice(0,50)}...</p>
                                 </div>
                                 <div class="flex justify-center items-center text-xl text-blue-600">
                                     <i class="fa-solid fa-circle-check"></i>
                                 </div>
                             </div>
                             <div class="my-4 pt-4 border-t flex justify-between items-center">
-                                <div><p>28 Dec 2022</p></div>
+                                <div><p>${new Date(
+									taskDateTimeString
+								).toLocaleString()}</p></div>
                                 <div>
                                     <div class="avatar-group -space-x-2">
                                         <div class="avatar">
@@ -299,6 +310,33 @@ const setIncomplete = () => {
 
 
 
+
+
+
+const allClassShow = (id) => {
+	
+	haveToDoTask.forEach(element => {
+		if (element.id === id) {
+			complete.push(element);
+		}
+	});
+	
+	complete.sort((first, second) => {
+		const datetimeStringFirst = `${first.taskDate}T${first.taskTime}`;
+		const datetimeStringSecond = `${second.taskDate}T${second.taskTime}`;
+		return (
+			new Date(datetimeStringSecond).getTime() -
+			new Date(datetimeStringFirst).getTime()
+		);
+	});
+
+	setComplete();
+	
+	// console.log(id);
+}
+
+
+
 // set complete task 
 const setComplete = () => {
 	const completeTaskContainer = document.getElementById(
@@ -306,7 +344,7 @@ const setComplete = () => {
 	);
 	completeTaskContainer.innerHTML = "";
 
-	incomplete.forEach(element => {
+	complete.forEach(element => {
 		const { taskTitle, taskTime } = element;
 		const div = document.createElement("div");
 		div.classList =
@@ -336,20 +374,3 @@ const setComplete = () => {
 		completeTaskContainer.appendChild(div);
 	});
 };
-
-
-
-
-const allClassShow = (id) => {
-	
-	haveToDoTask.forEach(element => {
-		if (element.id === id) {
-			console.log(complete.push(element));
-		}
-	});
-	
-	console.log(complete);
-	
-	
-	
-}
