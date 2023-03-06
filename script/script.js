@@ -58,23 +58,28 @@ let haveToDoTask;
 let incomplete;
 
 // complete array
-let complete;
+let complete = [
+	{
+		id: 2,
+		taskTitle: "It is top",
+
+		taskDescription:
+			"it is top task description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt aut asperiores accusantium, labore, ipsam nostrum qui provident sit veniam culpa minima ratione. Illo ipsum debitis, recusandae accusantium et assumenda quod.",
+
+		taskDate: "2023-03-25",
+
+		taskTime: "04:30",
+	}
+];
 
 
 
 
 const sortDate = () => {
-	// Valid Array list
-	const validDate = listOfAllTask.filter(task => {
-		const datetimeString = `${task.taskDate}T${task.taskTime}`;
-		const nowTimeValue = new Date().getTime();
-		const taskTimeValue = new Date(datetimeString).getTime();
-
-		return nowTimeValue < taskTimeValue;
-	});
-
-
-	// invalid Array list 
+	
+	const notCompletedArray = 
+	
+	// invalid Array list
 	const inValidDate = listOfAllTask.filter(task => {
 		const datetimeString = `${task.taskDate}T${task.taskTime}`;
 		const nowTimeValue = new Date().getTime();
@@ -84,7 +89,7 @@ const sortDate = () => {
 	});
 
 	incomplete = [...inValidDate];
-	
+
 	incomplete.sort((first, second) => {
 		const datetimeStringFirst = `${first.taskDate}T${first.taskTime}`;
 		const datetimeStringSecond = `${second.taskDate}T${second.taskTime}`;
@@ -95,9 +100,17 @@ const sortDate = () => {
 	});
 
 
+	// Valid Array list
+	const validDate = listOfAllTask.filter(task => {
+		const datetimeString = `${task.taskDate}T${task.taskTime}`;
+		const nowTimeValue = new Date().getTime();
+		const taskTimeValue = new Date(datetimeString).getTime();
+
+		return nowTimeValue < taskTimeValue;
+	});
 
 	haveToDoTask = [...validDate];
-	// have to do task sort 
+	// have to do task sort
 	haveToDoTask.sort((first, second) => {
 		const datetimeStringFirst = `${first.taskDate}T${first.taskTime}`;
 		const datetimeStringSecond = `${second.taskDate}T${second.taskTime}`;
@@ -105,17 +118,14 @@ const sortDate = () => {
 		return (
 			new Date(datetimeStringFirst).getTime() -
 			new Date(datetimeStringSecond).getTime()
-		);;
+		);
 	});
 
-
-	// how many work pending 
+	// how many work pending
 	const progressCount = document.getElementById("progress-count");
 	progressCount.innerText = haveToDoTask.length;
 
-
 	setFirstTopTask(haveToDoTask[0]);
-	
 }
 
 
@@ -328,19 +338,18 @@ const setComplete = () => {
 };
 
 
-// const allClassShow = () => {
-// 	const check = document.querySelectorAll(".completeCheck");
-// 	check.forEach(element => {
-// 		element.addEventListener('click', function () {
-// 			console.log(this);
-			
-// 		})
-		
-// 	})
 
-// }
 
 const allClassShow = (id) => {
-	console.log(id);
+	
+	haveToDoTask.forEach(element => {
+		if (element.id === id) {
+			console.log(complete.push(element));
+		}
+	});
+	
+	console.log(complete);
+	
+	
 	
 }
