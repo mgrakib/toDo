@@ -94,8 +94,11 @@
             <!-- recetnt should done end -->
 
 
-            <div class="flex w-[400px] overflow-y-scroll bg-green-400">
-               <div class=" bg-red-400">
+
+            <!-- complete and incomplete contianer -->
+            <div class="flex flex-nowrap w-full overflow-x-scroll complete-incomplete gap-5">
+                <!-- conplete  -->
+               <div class="  w-full flex-grow-0 flex-shrink-0 basis-auto">
                      <!-- completed text  -->
             <div class="flex justify-between items-center my-8">
                 <div class="font-bold">Completed</div>
@@ -105,8 +108,9 @@
             </div>
             <!-- completed text  -->
 
-            <!-- completed task container -->
-            <div class="max-h-[200px] overflow-y-scroll rounded-lg p-4 scroll-container">
+            <div>
+                <!-- completed task container -->
+            <div class="max-h-[200px] overflow-y-scroll rounded-lg p-4 scroll-container-complete">
                 <div class="p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg">
                     <div class="flex justify-between items-center">
                         <div>
@@ -182,22 +186,23 @@
                 </div>
             </div>
             <!-- completed task container -->
+            </div>
 
                </div>
 
-               <!-- incompleted  -->
-               <div  class="w-full">
-                 <!-- incompleted text  -->
+               <!-- inconplete  -->
+                <div class="  w-full flex-grow-0 flex-shrink-0 basis-auto">
+                     <!-- completed text  -->
             <div class="flex justify-between items-center my-8">
-                <div class="font-bold">incompleted</div>
+                <div class="font-bold">Incompleted</div>
                 <div class="text-blue-500 cursor-pointer">
                     view more
                 </div>
             </div>
-            <!-- incompleted text  -->
+            <!-- completed text  -->
 
-            <!-- incompleted task container -->
-            <div class="max-h-[200px] overflow-y-scroll rounded-lg p-4 scroll-container">
+            <!-- completed task container -->
+            <div id="incomplete-task-container" class="max-h-[200px] overflow-y-scroll rounded-lg p-4 scroll-container-incomplete">
                 <div class="p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg">
                     <div class="flex justify-between items-center">
                         <div>
@@ -222,60 +227,13 @@
                     </div>
                 </div>
 
-
-                <div class="p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-lg font-bold"><s>Already I started</s></p>
-                            <p class="text-gray-500">I am on the way to achiv my goal....</p>
-                        </div>
-                        <div class="flex justify-center items-center text-xl text-blue-600">
-                            <i class="fa-solid fa-circle-check"></i>
-                        </div>
-                    </div>
-                    <div class="my-4 pt-4 border-t flex justify-between items-center">
-                        <div><p>28 Dec 2022</p></div>
-                        <div>
-                            <div class="avatar-group -space-x-2">
-                                <div class="avatar">
-                                    <div class="w-[30px]">
-                                    <img src="./image/dp.png" />
-                                    </div>
-                                </div>
-                                </div>
-                        </div>
-                    </div>
-                </div>
-
-
-                 <div class="p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg">
-                    <div class="flex justify-between items-center">
-                        <div>
-                            <p class="text-lg font-bold"><s>Already I started</s></p>
-                            <p class="text-gray-500">I am on the way to achiv my goal....</p>
-                        </div>
-                        <div class="flex justify-center items-center text-xl text-blue-600">
-                            <i class="fa-solid fa-circle-check"></i>
-                        </div>
-                    </div>
-                    <div class="my-4 pt-4 border-t flex justify-between items-center">
-                        <div><p>28 Dec 2022</p></div>
-                        <div>
-                            <div class="avatar-group -space-x-2">
-                                <div class="avatar">
-                                    <div class="w-[30px]">
-                                    <img src="./image/dp.png" />
-                                    </div>
-                                </div>
-                                </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-            <!-- incompleted task container -->
+            <!-- completed task container -->
 
                </div>
+               
             </div>
+            <!-- complete and incomplete contianer -->
 
             <!-- creat new task modal  -->
            <div class="pt-4">

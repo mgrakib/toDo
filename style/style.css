@@ -1,6 +1,6 @@
 ::-webkit-scrollbar{
     width: 7px;
-    
+     
 }
 
 ::-webkit-scrollbar-thumb{
@@ -14,9 +14,19 @@
 }
 
 
-.scroll-container{
+.scroll-container-complete{
 background: linear-gradient(145deg, #408bf411, #408bf411);
 box-shadow:  -2px -2px 5px #ffffff7d,
             2px 2px 5px #bebebe55;
 
+}
+.scroll-container-incomplete{
+background: linear-gradient(145deg, #f4404011, #f4404011);
+box-shadow:  -2px -2px 5px #ffffff7d,
+            2px 2px 5px #bebebe55;
+
+}
+
+.complete-incomplete::-webkit-scrollbar{
+    height: 20px;
 }
