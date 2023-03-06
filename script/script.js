@@ -50,23 +50,49 @@ const listOfAllTask = [
 // have to do task  with valid date 
 let haveToDoTask;
 
-	
+// incomplete array
+let incomplete;
+
+// complete array
+let complete;
+
 
 
 
 const sortDate = () => {
+	// Valid Array list
 	const validDate = listOfAllTask.filter(task => {
 		const datetimeString = `${task.taskDate}T${task.taskTime}`;
 		const nowTimeValue = new Date().getTime();
-
 		const taskTimeValue = new Date(datetimeString).getTime();
 
 		return nowTimeValue < taskTimeValue;
 	});
 
 
-	haveToDoTask = [...validDate];
+	// invalid Array list 
+	const inValidDate = listOfAllTask.filter(task => {
+		const datetimeString = `${task.taskDate}T${task.taskTime}`;
+		const nowTimeValue = new Date().getTime();
+		const taskTimeValue = new Date(datetimeString).getTime();
+
+		return taskTimeValue < nowTimeValue;
+	});
+
+	incomplete = [...inValidDate];
 	
+	incomplete.sort((first, second) => {
+		const datetimeStringFirst = `${first.taskDate}T${first.taskTime}`;
+		const datetimeStringSecond = `${second.taskDate}T${second.taskTime}`;
+		return (
+			new Date(datetimeStringSecond).getTime() -
+			new Date(datetimeStringFirst).getTime()
+		);
+	});
+
+
+
+	haveToDoTask = [...validDate];
 	// have to do task sort 
 	haveToDoTask.sort((first, second) => {
 		const datetimeStringFirst = `${first.taskDate}T${first.taskTime}`;
@@ -92,7 +118,7 @@ const sortDate = () => {
 // refress for valid task 
 setInterval(() => {
 	sortDate();
-
+	setIncomplete();
 }, 1000);
 
 
@@ -146,11 +172,7 @@ const setFirstTopTask = (task) => {
 }
 
 
-
-
-
 // view all task 
-
 const viewAllTask = () => {
 	
 	const allTaskModalContainer = document.getElementById(
@@ -216,4 +238,84 @@ const viewAllTask = () => {
 	});
 	
 	
+};
+
+
+// set incomplete task 
+const setIncomplete = () => {
+	const incompleteTaskContainer = document.getElementById(
+		"incomplete-task-container"
+	);
+	incompleteTaskContainer.innerHTML = '';
+
+	incomplete.forEach(element => {
+		const { taskTitle, taskTime} = element;
+		const div = document.createElement('div');
+		div.classList =
+			"p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg";
+		div.innerHTML = `<div class="flex justify-between items-center">
+                                <div>
+                                    <p class="text-lg font-bold"><s>${taskTitle}</s></p>
+                                    <p class="text-gray-500">I am on the way to achiv my goal....</p>
+                                </div>
+                                <div class="flex justify-center items-center text-xl text-blue-600">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </div>
+                            </div>
+                            <div class="my-4 pt-4 border-t flex justify-between items-center">
+                                <div><p>28 Dec 2022</p></div>
+                                <div>
+                                    <div class="avatar-group -space-x-2">
+                                        <div class="avatar">
+                                            <div class="w-[30px]">
+                                            <img src="./image/dp.png" />
+                                            </div>
+                                        </div>
+                                        </div>
+                                </div>
+                            </div>`;
+		
+		incompleteTaskContainer.appendChild(div);
+	});
+	
+}
+
+
+
+// set complete task 
+const setComplete = () => {
+	const completeTaskContainer = document.getElementById(
+		"complete-task-container"
+	);
+	completeTaskContainer.innerHTML = "";
+
+	incomplete.forEach(element => {
+		const { taskTitle, taskTime } = element;
+		const div = document.createElement("div");
+		div.classList =
+			"p-5 mb-5 shadow-[0_0_5px_1px_rgba(0,0,0,.6)] rounded-lg";
+		div.innerHTML = `<div class="flex justify-between items-center">
+                                <div>
+                                    <p class="text-lg font-bold"><s>${taskTitle}</s></p>
+                                    <p class="text-gray-500">I am on the way to achiv my goal....</p>
+                                </div>
+                                <div class="flex justify-center items-center text-xl text-blue-600">
+                                    <i class="fa-solid fa-circle-check"></i>
+                                </div>
+                            </div>
+                            <div class="my-4 pt-4 border-t flex justify-between items-center">
+                                <div><p>28 Dec 2022</p></div>
+                                <div>
+                                    <div class="avatar-group -space-x-2">
+                                        <div class="avatar">
+                                            <div class="w-[30px]">
+                                            <img src="./image/dp.png" />
+                                            </div>
+                                        </div>
+                                        </div>
+                                </div>
+                            </div>`;
+
+		completeTaskContainer.appendChild(div);
+	});
 };
