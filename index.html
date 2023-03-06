@@ -56,10 +56,13 @@
                         <div class="w-[50px] h-[50px] flex justify-center items-center bg-blue-200 rounded-full"><i class="fa-regular fa-user"></i></div>
                     </div>
                 </div>
+
+                <!-- top description start  -->
                 <div class="border-t py-4">
                     <p class="text-gray-500">Description:</p>
                     <p class="text-gray-900">Love Is Easy But I'm Busy To FullFill My Drem... </p>
                 </div>
+                <!-- top description start  -->
                 <div class="flex justify-between items-center">
                     <div>
                         <p>Teams:</p>
@@ -191,22 +194,22 @@
                     <p class="text-center text-2xl text-gray-600 font-bold mb-4">New Task ToDo</p>
                     <div class="p-4 border-t ">
                         <p class="text-gray-600 text-xl font-bold mb-3">Title Task</p>
-                        <input type="text" placeholder="task title" class="input input-bordered w-full" />
+                        <input id="task-title" type="text" placeholder="task title" class="input input-bordered w-full" />
 
                         <p class="text-gray-600 text-xl font-bold mt-4 mb-3">Description</p>
-                        <textarea class="textarea textarea-bordered w-full" placeholder="task description"></textarea>
+                        <textarea id="task-description" class="textarea textarea-bordered w-full" placeholder="task description"></textarea>
                     </div>
 
                     <div class="flex justify-between items-center px-4 gap-3">
                          <div>
                             <p class="text-gray-600 text-xl font-bold mt-4">Date</p>
-                             <input type="date" placeholder="task title" class="input input-bordered w-full my-3" />
+                             <input id="task-date" type="date" placeholder="task title" class="input input-bordered w-full my-3" />
                             <label for="my-modal" class="btn w-full bg-blue-500 hover:bg-red-500">Cancle</label>
                         </div>
                         <div>
                             <p class="text-gray-600 text-xl font-bold mt-4">Time</p>
-                             <input type="time" placeholder="task title" class="input input-bordered w-full my-3" />
-                            <label for="my-modal" class="btn w-full bg-blue-500 hover:bg-red-500">Creat</label>
+                             <input id="task-time" type="time" placeholder="task title" class="input input-bordered w-full my-3" />
+                            <label onclick="createTask()" for="my-modal" class="btn w-full bg-blue-500 hover:bg-blue-800">Creat</label>
                         </div>
                     </div>
                 </div>
