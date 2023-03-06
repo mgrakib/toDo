@@ -15,7 +15,7 @@ const listOfAllTask = [
 		taskTitle: "It is top",
 
 		taskDescription:
-			"Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt aut asperiores accusantium, labore, ipsam nostrum qui provident sit veniam culpa minima ratione. Illo ipsum debitis, recusandae accusantium et assumenda quod.",
+			"it is top task description Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nesciunt aut asperiores accusantium, labore, ipsam nostrum qui provident sit veniam culpa minima ratione. Illo ipsum debitis, recusandae accusantium et assumenda quod.",
 
 		taskDate: "2023-03-25",
 
@@ -119,11 +119,20 @@ const createTask = () => {
 
 
 const setFirstTopTask = (task) => {
+	// object destructuring 
+	const { taskTitle, taskDescription, taskDate, taskTime } = task;
+	// toptask title 
 	const topTaskTitle = document.getElementById("top-task-title");
-	console.log(task);
-	
-	// topTaskTitle.innerText = task.taskTitle;
 	topTaskTitle.innerText = task.taskTitle;
+
+	// toptask description
+	const topTaskDescription = document.getElementById("top-task-description");
+	topTaskDescription.innerText = taskDescription.slice(0,100) + "...";
+
+	// task date and time
+	const topTaskDateTime = document.getElementById("top-task-DateTime");
+	const taskDateTimeString = `${taskDate}T${taskTime}`;
+	topTaskDateTime.innerText = new Date(taskDateTimeString).toLocaleString();
 }
 
 
