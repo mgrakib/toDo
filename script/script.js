@@ -1,6 +1,7 @@
 // all task list 
 const listOfAllTask = [
 	{
+		id: 1,
 		taskTitle: "I am going to do it",
 
 		taskDescription:
@@ -12,6 +13,7 @@ const listOfAllTask = [
 	},
 
 	{
+		id: 2,
 		taskTitle: "It is top",
 
 		taskDescription:
@@ -23,6 +25,7 @@ const listOfAllTask = [
 	},
 
 	{
+		id: 3,
 		taskTitle: "I am going to do it",
 
 		taskDescription:
@@ -34,6 +37,7 @@ const listOfAllTask = [
 	},
 
 	{
+		id: 4,
 		taskTitle: "I am going to do it",
 
 		taskDescription:
@@ -137,11 +141,14 @@ const createTask = () => {
 		`${taskDateValue}T${taskTimeValue}`
 	).getTime();
 
+	// every task id
+	const taskId = listOfAllTask.length + 1;
 	
 	if (nowDateTime > inputDateTime) {
 		alert('You cant set Backdate time')
 	} else {
 		const newArray = {
+			id : taskId,
 			taskTitle: taskTitleValue,
 			taskDescription: taskDescriptionValue,
 			taskDate: taskDateValue,
@@ -181,7 +188,7 @@ const viewAllTask = () => {
 	allTaskModalContainer.innerHTML = '';
 
 	haveToDoTask.forEach(element => {
-		const { taskTitle, taskDate, taskTime, taskDescription } = element;
+		const { taskTitle, taskDate, taskTime, taskDescription, id } = element;
 		
 		const taskTimeDate = new Date( 
 			`${taskDate}T${taskTime}`
@@ -197,7 +204,7 @@ const viewAllTask = () => {
                         <p id="top-task-DateTime">${taskTimeDate}</p>
                     </div>
                     <div>
-                        <div class="w-[50px] h-[50px] flex justify-center items-center bg-blue-200 rounded-full cursor-pointer"><i class="fa-regular fa-pen-to-square"></i></div>
+                        <div class="w-[50px] h-[50px] flex justify-center items-center bg-blue-200 rounded-full cursor-pointer"><i onclick='allClassShow(${id})'  class="fa-regular fa-square-check completeCheck"></i></div>
                     </div>
                 </div>
 
@@ -319,3 +326,21 @@ const setComplete = () => {
 		completeTaskContainer.appendChild(div);
 	});
 };
+
+
+// const allClassShow = () => {
+// 	const check = document.querySelectorAll(".completeCheck");
+// 	check.forEach(element => {
+// 		element.addEventListener('click', function () {
+// 			console.log(this);
+			
+// 		})
+		
+// 	})
+
+// }
+
+const allClassShow = (id) => {
+	console.log(id);
+	
+}
